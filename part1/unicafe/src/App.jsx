@@ -13,14 +13,27 @@ const App = () => {
   return(
     <div>
       <h1>Give Feedback</h1>
-      <button onClick={handleGoodClick}>Good</button>
-      <button onClick={handleNeutralClick}>Neutral</button>
-      <button onClick={handleBadClick}>Bad</button>
+      <Button onClick={handleGoodClick} text='good' />
+      <Button onClick={handleNeutralClick} text='neutral' />
+      <Button onClick={handleBadClick} text='bad' />
 
 
       <h1>Statistics</h1>
       <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
+  )
+}
+
+const Button = (props) => (
+  <button onClick = {props.onClick}>
+    {props.text}
+  </button>
+)
+
+const StatisticLine = (props) => {
+  console.log('rendering', props)
+  return(
+   <p>{props.text} {props.value}</p>
   )
 }
 
@@ -36,9 +49,10 @@ const App = () => {
 
     return(
       <div>
-        <p>Good: {props.good}</p>
-        <p>Neutral: {props.neutral}</p>
-        <p>Bad: {props.bad}</p>
+        <StatisticLine text='good' value={props.good} />
+        <StatisticLine text='Neutral' value={props.neutral} />
+        <StatisticLine text='Bad' value={props.bad} />
+        
         <br />
         <p>Total Feedback: {all}</p>
         <p>Average Feedback: {(props.good - props.bad)/ all}</p>
@@ -47,5 +61,8 @@ const App = () => {
     )
   }
   
+
+
+
 
 export default App
