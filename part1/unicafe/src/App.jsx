@@ -10,10 +10,6 @@ const App = () => {
   const handleNeutralClick = () => setNeutral(neutral + 1)
   const handleBadClick = () => setBad(bad + 1)
 
-  const Statistics = () => {
-
-  }
-
   return(
     <div>
       <h1>Give Feedback</h1>
@@ -21,20 +17,29 @@ const App = () => {
       <button onClick={handleNeutralClick}>Neutral</button>
       <button onClick={handleBadClick}>Bad</button>
 
-      <h1>Statistics</h1>
-      <p>
-      Good: {good}<br />
-      Neutral: {neutral}<br />
-      Bad: {bad}<br />
-      <br />
-      Total Reviews: {good + neutral + bad}<br />
-      Average Rating: {(good - bad)/(good + neutral + bad)}<br />
-      Positive Percentage: {(good)/(good+neutral+bad)*100} %
 
-      </p>
+      <h1>Statistics</h1>
+      <Statistics good={good} neutral={neutral} bad={bad} />
     </div>
   )
 }
 
+
+  const Statistics = (props) => {
+    const all = props.good + props.neutral + props.bad
+
+    return(
+      <div>
+        <p>Good: {props.good}</p>
+        <p>Neutral: {props.neutral}</p>
+        <p>Bad: {props.bad}</p>
+        <br />
+        <p>Total Feedback: {all}</p>
+        <p>Average Feedback: {(props.good - props.bad)}</p>
+        <p>Positive Feedback: {(props.good / all) * 100} %</p>
+      </div>
+    )
+  }
+  
 
 export default App
