@@ -13,6 +13,14 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
+
+    if (persons.some(person => person.name === newName)) {
+      return alert(`${newName} is already added to the playbook`)
+    }
+
+
+
+
     const personObject = { name: newName }
     setPersons(persons.concat(personObject))
     setNewName('')
@@ -34,7 +42,6 @@ const App = () => {
       <h2>Numbers</h2>
       {persons.map(person => <p key={person.name}>{person.name}</p>)}
 
-      <div>debug: {newName}</div>
     </div>
   )
 }
