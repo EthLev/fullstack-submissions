@@ -35,7 +35,7 @@ const Course = ({ course }) => {
   )
 }
 
-const Total = ({ parts }) => {
+/*const Total = ({ parts }) => {
   let totalTally = 0
   parts.forEach(part => {
     totalTally += part.exercises
@@ -44,7 +44,21 @@ const Total = ({ parts }) => {
   return (
     <b>total of {totalTally} exercises</b>
   )
+}*/
+
+
+const Total = ({ parts }) => {
+  const total = parts.reduce((sum, part) => {
+  return sum + part.exercises
+  }, 0)
+
+  return(
+    <b>total of {total} exercises</b>
+  )
 }
+
+
+
 
 const Content = ({ parts }) => {
   return (
