@@ -30,7 +30,19 @@ const Course = ({ course }) => {
     <div>
       <Header name={course.name} />
       <Content parts={course.parts} />
+      <Total parts={course.parts} />
     </div>
+  )
+}
+
+const Total = ({ parts }) => {
+  let totalTally = 0
+  parts.forEach(part => {
+    totalTally += part.exercises
+    console.log(totalTally)
+  })
+  return (
+    <b>total of {totalTally} exercises</b>
   )
 }
 
